@@ -11,17 +11,43 @@ var template = React.createElement(
     React.createElement(
         "p",
         null,
-        "Para."
+        "Para"
     )
 );
 
-// Exercise 1: Create a template called personTemplate and add JSX for
-// the followings:
-// ---------------------------------------------------
-// h1 -> Your name (i.e. Jane Doe)
-// p -> Youw batch (i.e. Batch: 35th)
-// p -> Your hometown (i.e. Hometown: Dhaka)
+var addOne = function addOne() {
+    console.log("Added One");
+};
+
+// Add function to handle -1 button event
+
+var count = 0;
+
+var counterTemplate = React.createElement(
+    "div",
+    null,
+    React.createElement(
+        "h1",
+        { id: "counter", className: "counter" },
+        count
+    ),
+    React.createElement(
+        "button",
+        { onClick: addOne },
+        "+1"
+    ),
+    React.createElement(
+        "button",
+        null,
+        "-1"
+    ),
+    React.createElement(
+        "button",
+        null,
+        "Reset"
+    )
+);
 
 var myApp = document.querySelector("#my-app");
 
-ReactDOM.render(template, myApp);
+ReactDOM.render(counterTemplate, myApp);
