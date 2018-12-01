@@ -1,3 +1,36 @@
+class Person{
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    getDescription() {
+        return this.name + " is " + this.age + " years old";
+    }
+
+}
+
+class Student extends Person {
+    constructor(name, age, ID) {
+        super(name, age);
+        this.ID = ID;
+    }
+
+    getDescription() {
+        return this.name + " is " + this.age + " years old and his id is " + this.ID;        
+    }
+}
+
+const p = new Person("John", 30);
+console.log(p.getDescription());
+
+const p2 = new Person("Jane", 25);
+console.log(p2.getDescription());
+
+const stud = new Student("Dave", 19, "2013222");
+console.log(stud.getDescription());
+
+
 let items = ["Go to the market", "Clean room"];
 
 const handleFormSubmit = (e) => {
