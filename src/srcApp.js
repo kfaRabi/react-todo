@@ -1,40 +1,46 @@
-// const template = (
-//     <div>
-//         <h1 id="par">Hello World</h1>
-//         <p>Para</p>
-//     </div>
-// )
+let items = ["Go to the market", "Clean room"];
 
-let count = 0;
+const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const val = e.target.elements.task.value;
 
-const addOne = () => {
-    count++;
+    if(val) {
+        items.push(val);
+        e.target.elements.task.value = "";
+        render();
+    }
+}
+
+const handleClear = () => {
+    items = [];
     render();
 }
 
-// Add function to handle -1 button event
-const deductOne = ()=>{
-    count--;
-    render();
-}
 
-const resetCounter = ()=>{
-    count = 0;
-    render();
-}
+
 
 const render = () => {
-    const counterTemplate = (
+ 
+    const template = (
         <div>
-            <h1 id="counter" className="counter">{count}</h1>
-            <button onClick={addOne}>+1</button>
-            <button onClick={deductOne}>-1</button>
-            <button onClick={resetCounter}>Reset</button>
+            <h1>App Title</h1>
+
+            <ol>
+                {items.map(item => <li key={item}>{item}</li>)}
+            </ol>
+
+            <button onClick={handleClear} disabled={items.length === 0 ? true : false}>Clear</button>
+
+            <form onSubmit={handleFormSubmit}>
+                <input type="text"  name="task"/>
+                <button>Add Item</button>
+            </form>
         </div>
-    );
-    
+    )
+
     const myApp = document.querySelector("#my-app");
     
-    ReactDOM.render(counterTemplate, myApp);
+    ReactDOM.render(template, myApp);
 }
+
 render();
